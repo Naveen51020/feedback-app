@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISKCON Newtown Feedback</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ISKCON Newtown Feedback</h1>
+        <form id="feedbackForm">
+            <div id="step1">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" name="mobile" required>
+                <button type="button" id="sendOtpBtn">Send OTP</button>
+            </div>
+
+            <div id="step2" style="display: none;">
+                <label for="otp">Enter OTP:</label>
+                <input type="text" id="otp" name="otp" required>
+                <button type="button" id="verifyOtpBtn">Verify OTP</button>
+            </div>
+
+            <div id="step3" style="display: none;">
+                <label>How was your visit?</label>
+                <div class="radio-group">
+                    <input type="radio" id="best" name="visit" value="Best" required>
+                    <label for="best">Best</label>
+                    <input type="radio" id="average" name="visit" value="Average">
+                    <label for="average">Average</label>
+                    <input type="radio" id="poor" name="visit" value="Poor">
+                    <label for="poor">Poor</label>
+                </div>
+                <button type="submit">Submit Feedback</button>
+            </div>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
