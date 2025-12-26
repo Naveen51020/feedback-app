@@ -68,15 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobile = document.getElementById('mobile').value;
         const visit = document.querySelector('input[name="visit"]:checked').value;
 
-        try {
-            // Send feedback to server and thank you sms
-            const response = await fetch('/send-feedback', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ mobile })
-            });
-            const data = await response.json();
-
+        fetch('/submit-feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mobile })
+        })
+        .then(response => response.json())
+        .then(data => {
             if(data.success){
                 message.textContent = 'Thank you for your feedback!';
                 feedbackForm.reset();
@@ -85,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 message.textContent = 'An error occurred while submitting feedback.';
             }
-
-        } catch (error) {
+        })
+        .catch(error => {
             message.textContent = 'An error occurred while submitting feedback.';
-        }
+        });
     });
 });
